@@ -14,4 +14,31 @@ do {
 
   Se usaron condicionales "do while" para que se escoja eficientemente 
 
+ Bloque 2: Matrices dinámicas
+Se crean matrices con punteros (int**), se llenan, se muestran, se suman filas, se busca el mayor elemento y se calcula la transpuesta.
+ 
+Bloque 3: Funciones como parámetros
+Se definen funciones (cuadrado, doble, inverso) y aplicar permite usarlas sobre un arreglo pasando la función como parámetro.
+
+Bloque 4: Lambdas
+Se usan funciones anónimas para transformar datos y acumular resultados; procesarMultiple aplica varias transformaciones seguidas.
+
+Bloque 5: Variables en main
+datos y tamDatos guardan información para reutilizarla entre opciones.
+
+Bloque 6: Opción 1
+Aplica una función (cuadrado, doble o inverso) a un arreglo.
+
+Bloque 7: Opción 2
+Trabaja con matrices: crear, mostrar, sumar, mayor y transpuesta.
+
+Bloque 8: Opción 3
+Guarda datos ingresados por el usuario.
+
+Bloque 9: Opción 4 (BONUS)
+Usa lambdas para transformar los datos guardados y obtener un resultado final.
+
+Bloque 10: Memoria
+Se libera memoria con delete[] para evitar errores.
+
 
