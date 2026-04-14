@@ -40,5 +40,30 @@ Usa lambdas para transformar los datos guardados y obtener un resultado final.
 
 Bloque 10: Memoria
 Se libera memoria con delete[] para evitar errores.
+--------------
+vector<function<double(double)>> transformaciones;  AQUI SE GUARDAN LAS FUNCIONES 
+
+            transformaciones.push_back([](double x) { return x * 2; });      Aqui se aplican las 3 funciones, entonces "x" son los valores ingresados en el paso 3. 
+            transformaciones.push_back([](double x) { return x + 3; });
+            transformaciones.push_back([](double x) { return x * x; });
+
+            auto acumulador = [](double a, double b) { return a + b; };       Aqui se combinan los resultados 
+
+            double res = procesarMultiple(datos, tamDatos, transformaciones, acumulador);
+
+            cout << "\nTransformaciones aplicadas:\n";
+            cout << "(x → x*2) → (x → x+3) → (x → x²)\n";      Guarda los resultados 
+            cout << "Resultado: " << res << endl;  Muestra el resultado de la operacion 
+        }
+
+    } while (opcion != 0);
+
+
+    if (datos != nullptr) {
+        delete[] datos;
+    }
+
+    return 0;
+}
 
 
