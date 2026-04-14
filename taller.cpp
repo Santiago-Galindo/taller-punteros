@@ -1,15 +1,7 @@
-/******************************************************************************
-
-                              Online C++ Compiler.
-               Code, Compile, Run and Debug C++ program online.
-Write your code in this editor and press "Run" button to compile and execute it.
-
-*******************************************************************************/
 #include <iostream>
 #include <vector>
 #include <functional>
 using namespace std;
-
 
 
 int** crearMatriz(int n, int m) {
@@ -71,7 +63,6 @@ int** transponer(int** matriz, int n, int m) {
 }
 
 
-
 double cuadrado(double x) { return x * x; }
 double doble(double x) { return x * 2; }
 double inverso(double x) { return (x != 0) ? 1 / x : 0; }
@@ -81,7 +72,6 @@ void aplicar(double* arr, int n, double (*func)(double)) {
         arr[i] = func(arr[i]);
     }
 }
-
 
 
 double procesarSimple(double* arr, int n,
@@ -96,6 +86,7 @@ double procesarSimple(double* arr, int n,
 
     return resultado;
 }
+
 
 double procesarMultiple(double* arr, int n,
                         vector<function<double(double)>> transformaciones,
@@ -117,22 +108,24 @@ double procesarMultiple(double* arr, int n,
 }
 
 
-
 int main() {
     int opcion;
 
+ 
+    double* datos = nullptr;
+    int tamDatos = 0;
+
     do {
-        cout << "\n===== Taller de PUNTEROS==\n";
-        cout << "Selecciona una opcion:\n";
+        cout << "\n===== Taller de PUNTEROS =====\n";
         cout << "1. Funciones como parametros\n";
-        cout << "2. Matriz dinamica + operaciones por punteros\n";
-        cout << "3. Lambdas + composicion de operaciones\n";
-        cout << "4. GANAR MAS NOTA PROFE (NIVEL BONUS)\n";
+        cout << "2. Matriz dinamica\n";
+        cout << "3. Lambdas (guardar datos)\n";
+        cout << "4. BONUS (usar datos de opcion 3)\n";
         cout << "0. Salir\n";
         cout << "Opcion: ";
         cin >> opcion;
 
-
+      
         if (opcion == 1) {
             int n;
             cout << "Tamaño del arreglo: ";
@@ -157,7 +150,7 @@ int main() {
             delete[] arr;
         }
 
-
+      
         else if (opcion == 2) {
             int n, m;
             cout << "Filas y columnas: ";
@@ -180,30 +173,30 @@ int main() {
 
  
         else if (opcion == 3) {
-            int n;
             cout << "Tamaño: ";
-            cin >> n;
+            cin >> tamDatos;
 
-            double* arr = new double[n];
-            for (int i = 0; i < n; i++) cin >> arr[i];
+            if (datos != nullptr) {
+                delete[] datos;
+            }
 
-            auto transformar = [](double x) { return x * 2; };
-            auto acumular = [](double a, double b) { return a + b; };
+            datos = new double[tamDatos];
 
-            double res = procesarSimple(arr, n, transformar, acumular);
-            cout << "Resultado: " << res << endl;
+            cout << "Ingrese valores:\n";
+            for (int i = 0; i < tamDatos; i++) {
+                cin >> datos[i];
+            }
 
-            delete[] arr;
+            cout << "Datos guardados correctamente para el BONUS\n";
         }
 
-
+        
         else if (opcion == 4) {
-            int n;
-            cout << "Tamaño: ";
-            cin >> n;
 
-            double* arr = new double[n];
-            for (int i = 0; i < n; i++) cin >> arr[i];
+            if (datos == nullptr || tamDatos == 0) {
+                cout << "Primero debes ingresar datos en la opcion 3\n";
+                continue;
+            }
 
             vector<function<double(double)>> transformaciones;
 
@@ -213,13 +206,19 @@ int main() {
 
             auto acumulador = [](double a, double b) { return a + b; };
 
-            double res = procesarMultiple(arr, n, transformaciones, acumulador);
-            cout << "Resultado: " << res << endl;
+            double res = procesarMultiple(datos, tamDatos, transformaciones, acumulador);
 
-            delete[] arr;
+            cout << "\nTransformaciones aplicadas:\n";
+            cout << "(x → x*2) → (x → x+3) → (x → x²)\n";
+            cout << "Resultado: " << res << endl;
         }
 
     } while (opcion != 0);
+
+
+    if (datos != nullptr) {
+        delete[] datos;
+    }
 
     return 0;
 }
