@@ -1,0 +1,17 @@
+# taller-punteros
+EXPLICACION DEL CODIGO:
+1. MENU:
+do {
+    cout << "\n===== Taller de PUNTEROS==\n";
+    cout << "Selecciona una opcion:\n";
+    cout << "1. Funciones como parametros\n";
+    cout << "2. Matriz dinamica + operaciones por punteros\n";
+    cout << "3. Lambdas + composicion de operaciones\n";
+    cout << "4. GANAR MAS NOTA PROFE (NIVEL BONUS)\n";
+    cout << "0. Salir\n";
+    cout << "Opcion: ";
+    cin >> opcion;
+
+  Se usaron condicionales "do while" para que se escoja eficientemente 
+
+
